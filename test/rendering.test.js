@@ -70,6 +70,7 @@ helper.files('rendering', 'mml', function(file) {
                     if (err) {
                         fs.writeFileSync(actual,JSON.stringify(actual_json,null,4));
                         fs.writeFileSync(expected,JSON.stringify(expected_json,null,4));
+                        // assert.deepEqual(actual_json, expected_json);
                         throw new Error('failed: xml ' + result + ' in json form does not match expected result:\n' + actual + ' (actual)\n' + expected + ' (expected)');
                     } else {
                         // cleanup any actual renders that no longer fail

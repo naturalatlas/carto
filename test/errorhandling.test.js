@@ -29,9 +29,11 @@ helper.files('errorhandling', 'mml', function(file) {
             }
             // @TODO for some reason, fs.readFile includes an additional \n
             // at the end of read files. Determine why.
-            // fs.writeFileSync(helper.resultFile(file), output);
-            var data = fs.readFileSync(helper.resultFile(file), 'utf8');
-            assert.deepEqual(util.getMessagesToPrint(output.msg), data);
+            var fixture = helper.resultFile(file);
+            var actual = util.getMessagesToPrint(output.msg);
+            if (process.env.UPDATE_FIXTURES) fs.writeFileSync(fixture, actual, 'utf8');
+            var expected = fs.readFileSync(fixture, 'utf8');
+            assert.deepEqual(actual, expected);
             done();
         });
     });
@@ -57,9 +59,11 @@ helper.files('errorhandling', 'mss', function(file) {
         }).renderMSS(mss);
         // @TODO for some reason, fs.readFile includes an additional \n
         // at the end of read files. Determine why.
-        // fs.writeFileSync(helper.resultFile(file), output);
-        var data = fs.readFileSync(helper.resultFile(file), 'utf8');
-        assert.deepEqual(util.getMessagesToPrint(output.msg), data);
+        var fixture = helper.resultFile(file);
+        var actual = util.getMessagesToPrint(output.msg);
+        if (process.env.UPDATE_FIXTURES) fs.writeFileSync(fixture, actual, 'utf8');
+        var expected = fs.readFileSync(fixture, 'utf8');
+        assert.deepEqual(actual, expected);
         done();
     });
 });
