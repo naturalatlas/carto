@@ -64,6 +64,10 @@ helper.files('rendering', 'mml', function(file) {
             }
             if (!_.isNil(output.data)) {
                 var result = helper.resultFile(file);
+                if (process.env.UPDATE_FIXTURES) {
+                  // console.log(result, typeof output.data);
+                  fs.writeFileSync(result, output.data, 'utf8');
+                }
                 helper.compareToXMLFile(result, output.data, function(err,expected_json,actual_json) {
                     var actual = file.replace(path.extname(file),'') + '-actual.json';
                     var expected = file.replace(path.extname(file),'') + '-expected.json';

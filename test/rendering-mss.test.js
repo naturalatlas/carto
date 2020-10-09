@@ -21,7 +21,7 @@ helper.files('rendering-mss', 'mss', function(file) {
         if (!_.isNil(output.data)) {
             var expected = file.replace(path.extname(file),'')+'.xml';
             if (process.env.UPDATE_FIXTURES || !existsSync(expected)) {
-              fs.writeFileSync(expected,output);
+              fs.writeFileSync(expected, output.data);
             }
             var expected_data = fs.readFileSync(expected, 'utf8');
             assert.equal(output.data.trim(),expected_data.trim());

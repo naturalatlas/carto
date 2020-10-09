@@ -14,7 +14,10 @@ var helper = exports;
 exports.files = function(dir, extension, callback) {
     dir = path.join(__dirname, '..', dir);
     extension = new RegExp('\\.' + extension + '$');
+    var patternTest;
+    if (process.env.FILE_PATTERN) patternTest = function(f) { return f.indexOf(process.env.FILE_PATTERN) > -1; };
     fs.readdirSync(dir).forEach(function(filename) {
+        if (patternTest && !patternTest(filename)) return;
         if (extension.test(filename)) {
             return callback(path.join(dir, filename));
         }
@@ -94,6 +97,7 @@ exports.compareToXMLFile = function(filename, second, callback, processors) {
         helper.parseXML(first, function(firstXML) {
             helper.parseXML(second, function(secondXML) {
                 processors.forEach(function(processor) {
+                    processor(firstXML);
                     processor(secondXML);
                 });
 
