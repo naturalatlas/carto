@@ -33,11 +33,11 @@
     "node": ">=0.5.x"
   },
   "dependencies": {
+    "@naturalatlas/mapnik-reference": "^8.11.0",
     "chroma-js": "~1.3.5",
     "hsluv": "~0.0.1",
     "js-yaml": "~3.12.0",
     "lodash": "~4.17.10",
-    "mapnik-reference": "~8.10.0",
     "semver": "~5.6.0",
     "yargs": "~12.0.1"
   },

@@ -1,0 +1,5 @@
+<Style filter-mode="first" name="style">
+  <Rule>
+    <TextSymbolizer face-name="Arial" halo-bgsmooth="true" halo-bgsmooth-max="#ffffff" halo-bgsmooth-min="#000000" halo-bgsmooth-outlier-hitrim="0.2" halo-bgsmooth-outlier-lotrim="0.2" halo-fill="#ffffff" halo-radius="4"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+</Style>

@@ -38,7 +38,7 @@ helper.files('rendering-mss', 'mss', function(file) {
                     }
                 });
             }
-            assert.ok(false);
+            throw new Error('Unexpected output: ' + JSON.stringify(output));
         }
         done();
     });
